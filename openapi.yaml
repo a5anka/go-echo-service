@@ -1,0 +1,27 @@
+openapi: 3.0.0
+info:
+  title: Echo Microservice
+  description: A simple microservice that echoes back the input string with a prefix.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080 
+paths:
+  /echo:
+    get:
+      summary: Echo the input string with a prefix
+      parameters:
+        - name: input
+          in: query
+          description: The string to be echoed
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with the echoed string
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad Request - Missing 'input' query parameter
